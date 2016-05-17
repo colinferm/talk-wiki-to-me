@@ -39,7 +39,7 @@ This section describes how to install the plugin and get it working.
 1. Upload `talkwiki.php`,`adminmenu.php`,and `plugin.php` to `/wp-content/plugins/talkwikitome` directory.  If talkwikitome does not already exist create it.
 2. Activate the plugin through the 'Plugins' menu in WordPress
 3. From the Admin Menu, select 'Settings' > 'Talk Wiki To Me'
-4.Configure the plugin as you please
+4. Configure the plugin as you please
 
 
 ## Frequently Asked Questions
@@ -54,7 +54,7 @@ I also worried that if I started to make entensive links to a particular website
 
 Currently if you make that change, all the previous links will be rendered inert.  I made the bracket setting global to the entire site, but I could also make it unique to the link tag that you create.  If there is a demand I can make that change in a future update.
 
-### How do I save my settings when I make changes? / My settings do not appear to stay after I make them? =
+### How do I save my settings when I make changes? / My settings do not appear to stay after I make them?
 
 The admin page uses AJAX to make changes after any value changes.  For the radio buttons (i.e. same browser / new browser ), the option is saved as you select the new option.  For the text fields, the value is saved when you move out away from that control (onblur).  So to ensure that a setting is saved: radio buttons, select the radio button option and it should be saved; text inputs and text areas, make the change and tab away or select another field.
 
