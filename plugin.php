@@ -113,6 +113,10 @@ class talkwikitome {
         }
         
         if (count($tags)) {
+                /*
+                 * Should add some kind of check to make sure the wiki summaries are available on the server.
+                 * Should also make this server driven by the link table.
+                 */
         	$feedURL = 'http://'.$_SERVER['SERVER_NAME'].'/wiki/api.php?action=summaries&format=json&pages=';
         	
         	for ($i = 0; $i < count($tags); $i++) {
@@ -123,7 +127,7 @@ class talkwikitome {
         		} 
         	}
         	
-        	error_log("wiki feed URL: ".$feedURL);
+        	//error_log("wiki feed URL: ".$feedURL);
         	
         	$urlHandle = fopen($feedURL, "r");
         	if ($urlHandle) {
@@ -138,15 +142,13 @@ class talkwikitome {
 					error_log("Summary for: ".$tagName.': '.$summary);
 					if (strlen($summary['summary'])) {
 						$replacement = '<div class="wiki-info-sidebar">
-											<div class="wiki-info-sidebar-header">
-												<h3>
-													<a href="'.$summary['link'].'">'.$summary['title'].'</a>
-												</h3>
-											</div>
-											<div class="wiki-info-sidebar-body">
-												'.trim($summary['summary']).'<a href="'.$summary['link'].'" class="wiki-info-sidebar-and">...</a>
-											</div>
-										</div>';
+									<div class="wiki-info-sidebar-header">
+								        	<h3><a href="'.$summary['link'].'">'.$summary['title'].'</a></h3>
+									</div>
+									<div class="wiki-info-sidebar-body">
+										'.trim($summary['summary']).'<a href="'.$summary['link'].'" class="wiki-info-sidebar-and">...</a>
+									</div>
+								</div>';
 										
 						$pos = strpos($content, '/wiki/index.php/'.$tags[$i]['tag']);
 						$nextPos = strpos($content, "</p>", $pos);
@@ -158,12 +160,7 @@ class talkwikitome {
 								$pos = $nextPos;
 							} 
 						}
-						//$pos = strpos($content, "</p>", $pos+1);
 						$content = substr_replace($content, '</p>'.$replacement, $pos, 4);
-										
-						//$content .= $replacement;
-											
-						//$content = preg_replace('/<\/p>', $replacement, $content, 1, 
 					}
 				}
         	}
