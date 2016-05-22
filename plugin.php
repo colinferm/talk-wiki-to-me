@@ -31,7 +31,6 @@ class talkwikitome {
      */
     function talkwikitomeTranslate($content) {
         global $wpdb, $post;
-        error_log("Post ID? ".$post->ID);
         $existing_tags = get_post_meta($post->ID, 'talkwikitome_tags', true);
         $summaries = get_post_meta($post->ID, 'talkwikitome_wiki_summaries', true);
 
