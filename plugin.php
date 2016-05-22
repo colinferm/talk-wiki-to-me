@@ -32,6 +32,7 @@ class talkwikitome {
     function talkwikitomeTranslate($content) {
         global $wpdb, $post;
         $existing_tags = get_post_meta($post->ID, 'talkwikitome_tags', true);
+        if (!$existing_tags) $existing_tags = array();
         $summaries = get_post_meta($post->ID, 'talkwikitome_wiki_summaries', true);
 
         // TODO: This should simply be a global variable.
