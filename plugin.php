@@ -157,7 +157,7 @@ class talkwikitome {
         $leftRight = "float: left;";
         for ($i = 0; $i < count($summaries); $i++) {
                 $summary = $summaries[$i];
-                if (strlen($summary['summary'])) {
+                if (is_array($summary) && strlen($summary['summary'])) {
                         $replacement = '<div class="wiki-info-sidebar">
                                           <div class="wiki-info-sidebar-header">
                                             <h3><a href="'.$summary['link'].'">'.$summary['title'].'</a></h3>
